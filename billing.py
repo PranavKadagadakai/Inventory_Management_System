@@ -44,7 +44,7 @@ class BillClass:
         
         # supplier detail using frame
         ProductFrame3=Frame(ProductFrame1,bd=4,relief=RIDGE)
-        ProductFrame3.place(x=2, y=140,width=398,height=385)
+        ProductFrame3.place(x=2, y=140,width=398,height=375)
 
         # scroll bars
         scrollY = Scrollbar(ProductFrame3, orient=VERTICAL)
@@ -80,16 +80,24 @@ class BillClass:
 
         # self.Product_Table.bind('<ButtonRelease-1>',self.get_data)  # its a event  that calls get_data()
         
-        lbl_note = Label(ProductFrame3, text="Note: 'Enter 0 QTY to Remove the Product from the Cart'", font=('goudy old style', 11), bg='white', fg='black').pack(side=BOTTOM, fill=X)
+        lbl_note = Label(ProductFrame1, text="Note: 'Enter 0 QTY to Remove the Product from the Cart'", anchor='w', font=('goudy old style', 12), bg='white', fg='black').pack(side=BOTTOM, fill=X)
         
         # =====CustomerFrame=====
-        CustomerFrame1 = Frame(self.root, bd=4, relief=RIDGE, bg='white')
-        CustomerFrame1.place(x=420, y=110, width=650, height=550)
+        self.var_name = StringVar()
+        self.var_contact = StringVar()
+        CustomerFrame = Frame(self.root, bd=4, relief=RIDGE, bg='white')
+        CustomerFrame.place(x=420, y=110, width=530, height=100)
         
-        cTitle = Label(CustomerFrame1, text='All Customers', font=('goudy old style', 20, 'bold'), bg='#262626', fg='white').pack(side=TOP, fill=X)
+        cTitle = Label(CustomerFrame, text='Customer Details', font=('goudy old style', 20, 'bold'), bg='lightgrey').pack(side=TOP, fill=X)
         
-        CustomerFrame2 = Frame(CustomerFrame1, bd=2, relief=RIDGE, bg='white')
-        CustomerFrame2.place(x=2, y=42, width=638, height=90)
+        lbl_CName = Label(CustomerFrame, text='Name', font=('times new roman', 15), bg='white').place(x=5, y=50)
+        txt_CName = Entry(CustomerFrame, font=('times new roman', 15), textvariable=self.var_name, bg='lightyellow').place(x=55, y=50, width=170)
+        
+        lbl_Contact = Label(CustomerFrame, text='Contact No.', font=('times new roman', 15), bg='white').place(x=230, y=50, width=110)
+        txt_Contact = Entry(CustomerFrame, textvariable=self.var_contact, font=('times new roman', 15), bg='lightyellow').place(x=345, y=50, width=160)
+        
+        Calc_Cart_Frame = Frame(self.root, bd=4, relief=RIDGE, bg='white')
+        Calc_Cart_Frame.place(x=420, y=190, width=530, height=470)
         
         
 if __name__ == '__main__':
