@@ -26,7 +26,8 @@ class IMS:
         # sub title
         current_date = datetime.date.today()
         current_time = datetime.datetime.now().time()
-        self.clock = Label(self.root, text=f"Welcome to Finance Management System\t\tDate: {current_date.strftime("%d-%m-%Y")}\t\tTime: {current_time.strftime("%H:%M")}",font=("times new roman", 15), bg="#4d636d", fg="white")
+        self.clock = Label(self.root, text=f"Welcome to Finance Management System\t\tDate: {current_date.strftime('%D-%M-%Y')}\t\tTime: {current_time.strftime('%H:%M')}", font=("times new roman", 15), bg="#4d636d", fg="white")
+
         self.clock.place(x=0,y=70,relwidth=1,height=30)
 
 
@@ -107,7 +108,7 @@ class IMS:
     def category(self):
         self.new_win=Toplevel(self.root)
         self.new_obj=categoryClass(self.new_win)
-        
+
     def product(self):
         self.new_win=Toplevel(self.root)
         self.new_obj=productClass(self.new_win)
