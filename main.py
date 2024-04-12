@@ -1,6 +1,7 @@
 from tkinter import *
 from PIL import Image,ImageTk
 import datetime
+import time
 from employee import employeeClass
 from supplier import supplierClass
 from category import categoryClass
@@ -26,9 +27,14 @@ class IMS:
         # sub title
         current_date = datetime.date.today()
         current_time = datetime.datetime.now().time()
-        self.clock = Label(self.root, text=f"Welcome to Finance Management System\t\tDate: {current_date.strftime('%D-%M-%Y')}\t\tTime: {current_time.strftime('%H:%M')}", font=("times new roman", 15), bg="#4d636d", fg="white")
 
-        self.clock.place(x=0,y=70,relwidth=1,height=30)
+=======
+        self.clock = Label(self.root, text="", font=("times new roman", 15), bg="#4d636d", fg="white")
+        self.clock.place(x=0, y=70, relwidth=1, height=30)
+
+        self.update_clock()  # Update the clock initially
+        #self.root.mainloop()
+>>>>>>> 7a2ecaed499582bbbb6ed70540c275f40c363f21
 
 
         #Left Menu Frame
@@ -96,6 +102,19 @@ class IMS:
 
 #--------------------------------------------- function definations ----------------------------------
 
+    def update_clock(self):
+        # Get the current date and time
+        current_date = datetime.date.today()
+
+        # Format date and time as strings
+        date_string = current_date.strftime("%Y-%m-%d")
+        time_string = time.strftime('%H:%M')
+
+        # Update the label text with formatted date and time
+        self.clock.config(text=f"Welcome to Inventory Management System\t\tDate: {date_string}\t\tTime: {time_string}")
+
+        # Schedule the update to run every second (1000 milliseconds)
+        self.root.after(1000, self.update_clock)
     # employee screen
     def employee(self):
         self.new_win=Toplevel(self.root)
