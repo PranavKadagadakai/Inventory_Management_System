@@ -1,5 +1,6 @@
 from tkinter import *
 from PIL import Image,ImageTk
+import datetime
 from employee import employeeClass
 from supplier import supplierClass
 from category import categoryClass
@@ -8,7 +9,7 @@ class IMS:
     def __init__(self,root):
         self.root=root
         self.root.geometry("1520x775+0+0")
-        self.root.title("Inventory Management System | Developed by FinTech Innovators")
+        self.root.title("Finance Management System | Developed by FinTech Innovators")
         #self.root.config(bg="grey")
 
         # Title
@@ -17,13 +18,15 @@ class IMS:
         self.title_icon=self.title_icon.resize((50,50),Image.LANCZOS)
         self.title_icon=ImageTk.PhotoImage(self.title_icon)
 
-        title=Label(self.root,text="Inventory Management System",image=self.title_icon,compound=LEFT,font=("times new roman",40,"bold"),bg="#010c48",fg="white",anchor="w",padx=20).place(x=0,y=0,relwidth=1,height=70)
+        title=Label(self.root,text="Finance Management System",image=self.title_icon,compound=LEFT,font=("times new roman",40,"bold"),bg="#010c48",fg="white",anchor="w",padx=20).place(x=0,y=0,relwidth=1,height=70)
 
         # logout button
         logout=Button(self.root,text="Logout",font=("times new roman",15,"bold"),bg="yellow",cursor="hand2").place(x=1350,y=10,height=50,width=150)
 
         # sub title
-        self.clock = Label(self.root, text="Welcome to Inventory Management System\t\tDate: DD-MM-YYYY\t\tTime: HH:MM:SS",font=("times new roman", 15), bg="#4d636d", fg="white")
+        current_date = datetime.date.today()
+        current_time = datetime.datetime.now().time()
+        self.clock = Label(self.root, text=f"Welcome to Finance Management System\t\tDate: {current_date.strftime("%d-%m-%Y")}\t\tTime: {current_time.strftime("%H:%M")}",font=("times new roman", 15), bg="#4d636d", fg="white")
         self.clock.place(x=0,y=70,relwidth=1,height=30)
 
 
@@ -88,7 +91,7 @@ class IMS:
         self.lbl_sales = Label(self.root, text="Total Sales\n[ 0 ]", bg="#ffc107", fg="white",font=("goudy old style", 20, "bold"), bd=5, relief=RIDGE).place(x=725, y=325,height=150, width=300)
 
         # footer
-        footer=Label(self.root,text="IMS- Inventory Management System | Developed by FinTech Innovators\nFor any technical issue contact : 1234567890",font=("times new roman",12),bg="#4d636d",fg="white").pack(side="bottom",fill=X)
+        footer=Label(self.root,text="FMS- Finance Management System | Developed by FinTech Innovators\nFor any technical issue contact : 1234567890",font=("times new roman",12),bg="#4d636d",fg="white").pack(side="bottom",fill=X)
 
 #--------------------------------------------- function definations ----------------------------------
 

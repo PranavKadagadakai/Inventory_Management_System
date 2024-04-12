@@ -6,7 +6,7 @@ class supplierClass:
     def __init__(self,root):
         self.root=root
         self.root.geometry("1100x500+220+130")
-        self.root.title("Inventory Management System | Developed by Fingers")
+        self.root.title("Finance Management System | Developed by FinTech Innovators")
         self.root.focus_force()
 
         #head title
