@@ -68,7 +68,7 @@ class productClass:
         # Button
         btn_save=Button(left_frame,text="Save",command=self.save,font=("goudy old style",12),bg="#2196f3",fg='white',cursor="hand2").place(x=10,y=400,width=100,height=28)
         btn_update = Button(left_frame, text="Update",command=self.update, font=("goudy old style", 12), bg="#4caf50", fg='white',cursor="hand2").place(x=130, y=400, width=100, height=28)
-        btn_delete = Button(left_frame, text="Delete", font=("goudy old style", 12), bg="#f44336", fg='white',cursor="hand2").place(x=250, y=400, width=100, height=28)
+        btn_delete = Button(left_frame, text="Delete",command=self.delete, font=("goudy old style", 12), bg="#f44336", fg='white',cursor="hand2").place(x=250, y=400, width=100, height=28)
         btn_clear = Button(left_frame, text="Clear",command=self.clear, font=("goudy old style", 12), bg="#607d8b", fg='white',cursor="hand2").place(x=370, y=400, width=100, height=28)
 
         # Create search frame
@@ -81,7 +81,7 @@ class productClass:
         cmb_search.current(0)
 
         txt_search = Entry(searchFrame, textvariable=self.var_searchTxt, font=("goudy old style", 10),bg="lightyellow").place(x=210, y=8, width=180, height=25)  # text box
-        btn_search = Button(searchFrame, text="Search", font=("goudy old style", 10, "bold"),bg='#4caf50', cursor="hand2").place(x=410, y=4, width=150, height=30)
+        btn_search = Button(searchFrame, text="Search",command=self.search, font=("goudy old style", 10, "bold"),bg='#4caf50', cursor="hand2").place(x=410, y=4, width=150, height=30)
 
 
         # product detail using tree view
@@ -208,6 +208,9 @@ class productClass:
         self.var_qty.set("")
         self.var_status.set("select")
 
+        self.var_searchBy.set("Select")
+        self.var_searchTxt.set("")
+
         self.show()
     
     def get_data(self,ev):
@@ -254,6 +257,56 @@ class productClass:
 
         except Exception as ex:
                 messagebox.showerror("Error", f"Error due to: {str(ex)}", parent=self.root)
+            
+            
+    def delete(self):
+        con=sqlite3.connect(database='ims.db')
+        cur=con.cursor()
+
+        try:
+            if self.var_pid.get()=="":
+                messagebox.showerror("Error","Select from the List",parent=self.root)
+            else:
+                cur.execute("Select * from product where pid=?",(self.var_pid.get(),))
+                row=cur.fetchone()
+                if row==None:
+                    messagebox.showerror("Error","Product Not Found",parent=self.root)
+                else:
+                    check=messagebox.askyesno("Conform",f"Do you want to delete Product ID: {self.var_pid.get()}")
+                    if check==True:
+                        cur.execute("delete from product where pid=?",(self.var_pid.get(),))
+                        con.commit()
+                        messagebox.showinfo("Success","Record Deleted Successfully",parent=self.root)
+                        self.clear()
+
+        except Exception as ex:
+            messagebox.showerror("Error",f"Error due to: {str(ex)}",parent=self.root)
+            
+            
+    def search(self):
+        con = sqlite3.connect(database='ims.db')
+        cur = con.cursor()
+
+        try:
+            if self.var_searchBy.get()=='Select':
+                messagebox.showerror("Error","Select Search Type",parent=self.root)
+            elif self.var_searchTxt.get()=="":
+                messagebox.showerror("Error","Enter proper inputs",parent=self.root)
+
+            else:
+                cur.execute("select * from product where "+self.var_searchBy.get()+" LIKE '%"+self.var_searchTxt.get()+"%'")
+                rows = cur.fetchall()
+                if len(rows)!=0:
+                    self.ProductTable.delete(*self.ProductTable.get_children())
+                    for row in rows:
+                        self.ProductTable.insert('', END, values=row)
+                else:
+                    messagebox.showerror("Error","No Record found",parent=self.root)
+
+        except Exception as ex:
+            messagebox.showerror("Error", f"Error due to: {str(ex)}", parent=self.root)
+
+
 
 
 if __name__ == "__main__":

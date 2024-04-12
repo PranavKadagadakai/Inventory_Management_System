@@ -3,11 +3,12 @@ from PIL import Image,ImageTk
 from employee import employeeClass
 from supplier import supplierClass
 from category import categoryClass
+from product import productClass
 class IMS:
     def __init__(self,root):
         self.root=root
         self.root.geometry("1520x775+0+0")
-        self.root.title("Inventory Management System | Developed by Fingers")
+        self.root.title("Inventory Management System | Developed by FinTech Innovators")
         #self.root.config(bg="grey")
 
         # Title
@@ -33,7 +34,7 @@ class IMS:
         self.Frame_icon=ImageTk.PhotoImage(self.Frame_icon)
 
         leftFrame=Frame(self.root,bd=2,relief=RIDGE,bg="#eeeee4")
-        leftFrame.place(x=0,y=102,width=250,height=625)
+        leftFrame.place(x=0,y=102,width=250,height=630)
 
         lbl_Frame_icon=Label(leftFrame,image=self.Frame_icon)
         lbl_Frame_icon.pack(side=TOP,fill=X)
@@ -44,7 +45,7 @@ class IMS:
         self.frame_btn_icon = ImageTk.PhotoImage(self.frame_btn_icon)
 
         #Frame Menu
-        menu=Label(leftFrame,text="Menu",font=("times new roman",25),bg="#009688").pack(side=TOP,fill=X)
+        menu=Label(leftFrame,text="Menu",font=("times new roman",20),bg="#009688").pack(side=TOP,fill=X)
 
         #Frame button Employee
         employee=Button(leftFrame,text="Employee",command=self.employee,image=self.frame_btn_icon,compound=LEFT,padx=15,anchor="w",font=("times new roman",20,"bold"),bg="white",bd=4,cursor="hand2").pack(side=TOP,fill=X)
@@ -56,13 +57,18 @@ class IMS:
         category = Button(leftFrame, text="Category",command=self.category,image=self.frame_btn_icon,compound=LEFT,padx=15,anchor="w", font=("times new roman", 20, "bold"), bg="white", bd=4,cursor="hand2").pack(side=TOP, fill=X)
 
         # Frame button Product
-        product = Button(leftFrame, text="Product",image=self.frame_btn_icon,compound=LEFT,padx=15,anchor="w", font=("times new roman", 20, "bold"), bg="white", bd=4,cursor="hand2").pack(side=TOP, fill=X)
+        product = Button(leftFrame, text="Product",command=self.product,image=self.frame_btn_icon,compound=LEFT,padx=15,anchor="w", font=("times new roman", 20, "bold"), bg="white", bd=4,cursor="hand2").pack(side=TOP, fill=X)
 
         # Frame button Sales
         sales = Button(leftFrame, text="Sales",image=self.frame_btn_icon,compound=LEFT,padx=15,anchor="w", font=("times new roman", 20, "bold"), bg="white", bd=4,cursor="hand2").pack(side=TOP, fill=X)
 
+        # Frame button Bill
+        exit = Button(leftFrame, text="Bill", image=self.frame_btn_icon, compound=LEFT, padx=15, anchor="w",font=("times new roman", 20, "bold"), bg="white", bd=4, cursor="hand2").pack(side=TOP, fill=X)
+
         # Frame button Exit
         exit = Button(leftFrame, text="Exit",image=self.frame_btn_icon,compound=LEFT,padx=15,anchor="w", font=("times new roman", 20, "bold"), bg="white", bd=4,cursor="hand2").pack(side=TOP, fill=X)
+
+
 
 
         # main Contents
@@ -82,7 +88,7 @@ class IMS:
         self.lbl_sales = Label(self.root, text="Total Sales\n[ 0 ]", bg="#ffc107", fg="white",font=("goudy old style", 20, "bold"), bd=5, relief=RIDGE).place(x=725, y=325,height=150, width=300)
 
         # footer
-        footer=Label(self.root,text="IMS- Inventory Management System | Developed by Fingers\nFor any technical issue contact : 1234567890",font=("times new roman",12),bg="#4d636d",fg="white").pack(side="bottom",fill=X)
+        footer=Label(self.root,text="IMS- Inventory Management System | Developed by FinTech Innovators\nFor any technical issue contact : 1234567890",font=("times new roman",12),bg="#4d636d",fg="white").pack(side="bottom",fill=X)
 
 #--------------------------------------------- function definations ----------------------------------
 
@@ -98,6 +104,10 @@ class IMS:
     def category(self):
         self.new_win=Toplevel(self.root)
         self.new_obj=categoryClass(self.new_win)
+        
+    def product(self):
+        self.new_win=Toplevel(self.root)
+        self.new_obj=productClass(self.new_win)
 
 
 if __name__=="__main__":
