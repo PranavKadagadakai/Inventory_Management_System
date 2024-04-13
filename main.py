@@ -3,6 +3,7 @@ from PIL import Image,ImageTk
 from employee import employeeClass
 from supplier import supplierClass
 from category import categoryClass
+import os
 class IMS:
     def __init__(self,root):
         self.root=root
@@ -19,7 +20,7 @@ class IMS:
         title=Label(self.root,text="Inventory Management System",image=self.title_icon,compound=LEFT,font=("times new roman",40,"bold"),bg="#010c48",fg="white",anchor="w",padx=20).place(x=0,y=0,relwidth=1,height=70)
 
         # logout button
-        logout=Button(self.root,text="Logout",font=("times new roman",15,"bold"),bg="yellow",cursor="hand2").place(x=1350,y=10,height=50,width=150)
+        logout=Button(self.root,text="Logout", command=self.logout ,font=("times new roman",15,"bold"),bg="yellow",cursor="hand2").place(x=1350,y=10,height=50,width=150)
 
         # sub title
         self.clock = Label(self.root, text="Welcome to Inventory Management System\t\tDate: DD-MM-YYYY\t\tTime: HH:MM:SS",font=("times new roman", 15), bg="#4d636d", fg="white")
@@ -98,6 +99,10 @@ class IMS:
     def category(self):
         self.new_win=Toplevel(self.root)
         self.new_obj=categoryClass(self.new_win)
+
+    def logout(self):
+       self.root.destroy()
+       os.system("python login.py")
 
 
 if __name__=="__main__":

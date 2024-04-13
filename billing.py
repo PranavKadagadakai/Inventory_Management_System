@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk, messagebox
 from PIL import Image, ImageTk
+import os
 
 class BillClass:
     def __init__(self,root):
@@ -18,7 +19,7 @@ class BillClass:
         title=Label(self.root,text="Inventory Management System",image=self.title_icon,compound=LEFT,font=("times new roman",40,"bold"),bg="#010c48",fg="white",anchor="w",padx=20).place(x=0,y=0,relwidth=1,height=70)
 
         # logout button
-        logout=Button(self.root,text="Logout",font=("times new roman",15,"bold"),bg="yellow",cursor="hand2").place(x=1350,y=10,height=50,width=150)
+        logout=Button(self.root,text="Logout", command=self.logout,font=("times new roman",15,"bold"),bg="yellow",cursor="hand2").place(x=1350,y=10,height=50,width=150)
 
         # sub title
         self.clock = Label(self.root, text="Welcome to Inventory Management System\t\tDate: DD-MM-YYYY\t\tTime: HH:MM:SS",font=("times new roman", 15), bg="#4d636d", fg="white")
@@ -91,6 +92,10 @@ class BillClass:
         CustomerFrame2 = Frame(CustomerFrame1, bd=2, relief=RIDGE, bg='white')
         CustomerFrame2.place(x=2, y=42, width=638, height=90)
         
+
+    def logout(self):
+        self.root.destroy()
+        os.system("python login.py")
         
 if __name__ == '__main__':
     root = Tk()
