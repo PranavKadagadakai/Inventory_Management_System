@@ -4,17 +4,14 @@ from PIL import Image,ImageTk
 import datetime
 import time
 from tkinter import messagebox
-import os
 from employee import employeeClass
 from supplier import supplierClass
 from category import categoryClass
-<<<<<<< HEAD
 import os
-=======
 from product import productClass
 from sales import saleClass
 
->>>>>>> refs/remotes/origin/main
+
 class IMS:
     def __init__(self,root):
         self.root=root
@@ -142,12 +139,12 @@ class IMS:
         self.new_win=Toplevel(self.root)
         self.new_obj=categoryClass(self.new_win)
 
-<<<<<<< HEAD
+
     def logout(self):
        self.root.destroy()
        os.system("python login.py")
 
-=======
+
     def product(self):
         self.new_win=Toplevel(self.root)
         self.new_obj=productClass(self.new_win)
@@ -188,7 +185,6 @@ class IMS:
 
         except Exception as ex:
             messagebox.showerror("Error",f"Error due to: {str(ex)}",parent=self.root)
->>>>>>> refs/remotes/origin/main
 
 if __name__=="__main__":
     root=Tk()
