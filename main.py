@@ -10,6 +10,7 @@ from supplier import supplierClass
 from category import categoryClass
 from product import productClass
 from sales import saleClass
+
 class IMS:
     def __init__(self,root):
         self.root=root
@@ -32,13 +33,12 @@ class IMS:
         current_date = datetime.date.today()
         current_time = datetime.datetime.now().time()
 
-=======
+
         self.clock = Label(self.root, text="", font=("times new roman", 15), bg="#4d636d", fg="white")
         self.clock.place(x=0, y=70, relwidth=1, height=30)
 
         self.update_clock()  # Update the clock initially
         #self.root.mainloop()
->>>>>>> 7a2ecaed499582bbbb6ed70540c275f40c363f21
 
 
         #Left Menu Frame
@@ -80,7 +80,7 @@ class IMS:
         exit = Button(leftFrame, text="Bill", image=self.frame_btn_icon, compound=LEFT, padx=15, anchor="w",font=("times new roman", 20, "bold"), bg="white", bd=4, cursor="hand2").pack(side=TOP, fill=X)
 
         # Frame button Exit
-        exit = Button(leftFrame, text="Exit",image=self.frame_btn_icon,compound=LEFT,padx=15,anchor="w", font=("times new roman", 20, "bold"), bg="white", bd=4,cursor="hand2").pack(side=TOP, fill=X)
+        back = Button(leftFrame, text="Back",image=self.frame_btn_icon,compound=LEFT,padx=15,anchor="w", font=("times new roman", 20, "bold"), bg="white", bd=4,cursor="hand2").pack(side=TOP, fill=X)
 
 
 
@@ -145,6 +145,7 @@ class IMS:
     def sale(self):
         self.new_win=Toplevel(self.root)
         self.new_obj=saleClass(self.new_win)
+
 
     def update_lbl(self):
         con=sqlite3.connect(database='ims.db')
