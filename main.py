@@ -31,11 +31,14 @@ class IMS:
         # sub title
         current_date = datetime.date.today()
         current_time = datetime.datetime.now().time()
+
+=======
         self.clock = Label(self.root, text="", font=("times new roman", 15), bg="#4d636d", fg="white")
         self.clock.place(x=0, y=70, relwidth=1, height=30)
 
         self.update_clock()  # Update the clock initially
         #self.root.mainloop()
+>>>>>>> 7a2ecaed499582bbbb6ed70540c275f40c363f21
 
 
         #Left Menu Frame
@@ -134,7 +137,7 @@ class IMS:
     def category(self):
         self.new_win=Toplevel(self.root)
         self.new_obj=categoryClass(self.new_win)
-        
+
     def product(self):
         self.new_win=Toplevel(self.root)
         self.new_obj=productClass(self.new_win)
