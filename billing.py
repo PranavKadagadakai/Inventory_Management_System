@@ -1,9 +1,9 @@
 from tkinter import *
 from tkinter import ttk, messagebox
 from PIL import Image, ImageTk
-import os
 import datetime
 import sqlite3
+import time
 
 class BillClass:
     def __init__(self,root):
@@ -21,7 +21,7 @@ class BillClass:
         title=Label(self.root,text="Finance Management System",image=self.title_icon,compound=LEFT,font=("times new roman",40,"bold"),bg="#010c48",fg="white",anchor="w",padx=20).place(x=0,y=0,relwidth=1,height=70)
 
         # logout button
-        logout=Button(self.root,text="Logout", command=self.logout,font=("times new roman",15,"bold"),bg="yellow",cursor="hand2").place(x=1350,y=10,height=50,width=150)
+        logout=Button(self.root,text="Logout",font=("times new roman",15,"bold"),bg="yellow",cursor="hand2").place(x=1350,y=10,height=50,width=150)
 
         # sub title
         current_date = datetime.date.today()
@@ -97,10 +97,6 @@ class BillClass:
         
         lbl_CName = Label(CustomerFrame, text='Name', font=('times new roman', 15), bg='white').place(x=5, y=50)
         txt_CName = Entry(CustomerFrame, font=('times new roman', 15), textvariable=self.var_cname, bg='lightyellow').place(x=55, y=50, width=170)
-
-    def logout(self):
-        self.root.destroy()
-        os.system("python login.py")
         
         lbl_Contact = Label(CustomerFrame, text='Contact No.', font=('times new roman', 15), bg='white').place(x=250, y=50, width=110)
         txt_Contact = Entry(CustomerFrame, textvariable=self.var_contact, font=('times new roman', 15), bg='lightyellow').place(x=365, y=50, width=160)
@@ -114,27 +110,27 @@ class BillClass:
         CalcFrame = Frame(Calc_Cart_Frame, bd=9, relief=RIDGE, bg='white')
         CalcFrame.place(x=5, y=10, width=285, height=365)
         
-        txt_cal_input = Entry(CalcFrame, textvariable=self.var_cal_input, font=('arial', 15, 'bold'), justify=RIGHT, bd=10, relief=GROOVE, width=21).grid(row=0, columnspan=4)
+        txt_cal_input = Entry(CalcFrame, textvariable=self.var_cal_input, font=('arial', 15, 'bold'), justify=RIGHT, bd=10, relief=GROOVE, width=22).grid(row=0, columnspan=4)
         
-        btn_7 = Button(CalcFrame, text='7', font=('Arial',15, 'bold'), command= lambda: self.get_input(7), bd=5, width=4, pady=10, cursor='hand2').grid(row=1, column=0)
-        btn_8 = Button(CalcFrame, text='8', font=('Arial',15, 'bold'), command= lambda: self.get_input(8), bd=5, width=4, pady=10, cursor='hand2').grid(row=1, column=1)
-        btn_9 = Button(CalcFrame, text='9', font=('Arial',15, 'bold'), command= lambda: self.get_input(9), bd=5, width=4, pady=10, cursor='hand2').grid(row=1, column=2)
-        btn_sum = Button(CalcFrame, text='+', font=('Arial',15, 'bold'), command= lambda: self.get_input('+'), bd=5, width=4, pady=10, cursor='hand2').grid(row=1, column=3)
+        btn_7 = Button(CalcFrame, text='7', font=('Arial',15, 'bold'), command= lambda: self.get_input(7), bd=5, width=4, pady=13, cursor='hand2').grid(row=1, column=0)
+        btn_8 = Button(CalcFrame, text='8', font=('Arial',15, 'bold'), command= lambda: self.get_input(8), bd=5, width=4, pady=13, cursor='hand2').grid(row=1, column=1)
+        btn_9 = Button(CalcFrame, text='9', font=('Arial',15, 'bold'), command= lambda: self.get_input(9), bd=5, width=4, pady=13, cursor='hand2').grid(row=1, column=2)
+        btn_sum = Button(CalcFrame, text='+', font=('Arial',15, 'bold'), command= lambda: self.get_input('+'), bd=5, width=4, pady=13, cursor='hand2').grid(row=1, column=3)
         
-        btn_4 = Button(CalcFrame, text='4', font=('Arial',15, 'bold'), command= lambda: self.get_input(4), bd=5, width=4, pady=10, cursor='hand2').grid(row=2, column=0)
-        btn_5 = Button(CalcFrame, text='5', font=('Arial',15, 'bold'), command= lambda: self.get_input(5), bd=5, width=4, pady=10, cursor='hand2').grid(row=2, column=1)
-        btn_6 = Button(CalcFrame, text='6', font=('Arial',15, 'bold'), command= lambda: self.get_input(6), bd=5, width=4, pady=10, cursor='hand2').grid(row=2, column=2)
-        btn_sub = Button(CalcFrame, text='-', font=('Arial',15, 'bold'), command= lambda: self.get_input('-'), bd=5, width=4, pady=10, cursor='hand2').grid(row=2, column=3)
+        btn_4 = Button(CalcFrame, text='4', font=('Arial',15, 'bold'), command= lambda: self.get_input(4), bd=5, width=4, pady=13, cursor='hand2').grid(row=2, column=0)
+        btn_5 = Button(CalcFrame, text='5', font=('Arial',15, 'bold'), command= lambda: self.get_input(5), bd=5, width=4, pady=13, cursor='hand2').grid(row=2, column=1)
+        btn_6 = Button(CalcFrame, text='6', font=('Arial',15, 'bold'), command= lambda: self.get_input(6), bd=5, width=4, pady=13, cursor='hand2').grid(row=2, column=2)
+        btn_sub = Button(CalcFrame, text='-', font=('Arial',15, 'bold'), command= lambda: self.get_input('-'), bd=5, width=4, pady=13, cursor='hand2').grid(row=2, column=3)
+
+        btn_1 = Button(CalcFrame, text='1', font=('Arial',15, 'bold'), command= lambda: self.get_input(1), bd=5, width=4, pady=13, cursor='hand2').grid(row=3, column=0)
+        btn_2 = Button(CalcFrame, text='2', font=('Arial',15, 'bold'), command= lambda: self.get_input(2), bd=5, width=4, pady=13, cursor='hand2').grid(row=3, column=1)
+        btn_3 = Button(CalcFrame, text='3', font=('Arial',15, 'bold'), command= lambda: self.get_input(3), bd=5, width=4, pady=13, cursor='hand2').grid(row=3, column=2)
+        btn_mul = Button(CalcFrame, text='*', font=('Arial',15, 'bold'), command= lambda: self.get_input('*'), bd=5, width=4, pady=13, cursor='hand2').grid(row=3, column=3)
         
-        btn_1 = Button(CalcFrame, text='1', font=('Arial',15, 'bold'), command= lambda: self.get_input(1), bd=5, width=4, pady=10, cursor='hand2').grid(row=3, column=0)
-        btn_2 = Button(CalcFrame, text='2', font=('Arial',15, 'bold'), command= lambda: self.get_input(2), bd=5, width=4, pady=10, cursor='hand2').grid(row=3, column=1)
-        btn_3 = Button(CalcFrame, text='3', font=('Arial',15, 'bold'), command= lambda: self.get_input(3), bd=5, width=4, pady=10, cursor='hand2').grid(row=3, column=2)
-        btn_mul = Button(CalcFrame, text='*', font=('Arial',15, 'bold'), command= lambda: self.get_input('*'), bd=5, width=4, pady=10, cursor='hand2').grid(row=3, column=3)
-        
-        btn_0 = Button(CalcFrame, text='0', font=('Arial',15, 'bold'), command= lambda: self.get_input(0), bd=5, width=4, pady=15, cursor='hand2').grid(row=4, column=0)
-        btn_c = Button(CalcFrame, text='c', font=('Arial',15, 'bold'), command=self.clear_cal, bd=5, width=4, pady=15, cursor='hand2').grid(row=4, column=1)
-        btn_eq = Button(CalcFrame, text='=', font=('Arial',15, 'bold'), command=self.perform_cal, bd=5, width=4, pady=15, cursor='hand2').grid(row=4, column=2)
-        btn_div = Button(CalcFrame, text='/', font=('Arial',15, 'bold'), command= lambda: self.get_input('/'), bd=5, width=4, pady=15, cursor='hand2').grid(row=4, column=3)
+        btn_0 = Button(CalcFrame, text='0', font=('Arial',15, 'bold'), command= lambda: self.get_input(0), bd=5, width=4, pady=17, cursor='hand2').grid(row=4, column=0)
+        btn_c = Button(CalcFrame, text='c', font=('Arial',15, 'bold'), command=self.clear_cal, bd=5, width=4, pady=17, cursor='hand2').grid(row=4, column=1)
+        btn_eq = Button(CalcFrame, text='=', font=('Arial',15, 'bold'), command=self.perform_cal, bd=5, width=4, pady=17, cursor='hand2').grid(row=4, column=2)
+        btn_div = Button(CalcFrame, text='/', font=('Arial',15, 'bold'), command= lambda: self.get_input('/'), bd=5, width=4, pady=17, cursor='hand2').grid(row=4, column=3)
         
         # =====CartFrame=====
         CartFrame=Frame(Calc_Cart_Frame,bd=4,relief=RIDGE)
@@ -229,7 +225,7 @@ class BillClass:
         btn_clear_all = Button(billMenuFrame, text='Clear All', cursor='hand2', font=('goudy old style', 15, 'bold'), bg='grey', fg='white')
         btn_clear_all.place(x=124, y=80, width=120, height=50)
         
-        btn_generate = Button(billMenuFrame, text='Generate/Save Bill', cursor='hand2', font=('goudy old style', 15, 'bold'), bg='#009688', fg='white')
+        btn_generate = Button(billMenuFrame, text='Generate\nSave Bill', command=self.generate_bill, cursor='hand2', font=('goudy old style', 15, 'bold'), bg='#009688', fg='white')
         btn_generate.place(x=246, y=80, width=160, height=50)
 
         # =====Footer=====
@@ -344,13 +340,16 @@ class BillClass:
             self.bill_updates()
             
     def bill_updates(self):
-        bill_amt = 0
-        net_pay = 0
+        self.bill_amt = 0
+        self.net_pay = 0
+        self.discount = 0
         for row in self.cart_list:
-            bill_amt += (float(row[2]) * int(row[3]))
-        net_pay = bill_amt - ((bill_amt * 5)/100)
-        self.lbl_amt.config(text=f"Bill Amount\n{str(bill_amt)}")
-        self.lbl_net_pay.config(text=f"Net Pay\n{str(net_pay)}")
+            self.bill_amt += (float(row[2]) * int(row[3]))
+        
+        self.discount = (self.bill_amt * 5)/100
+        self.net_pay = self.bill_amt - self.discount
+        self.lbl_amt.config(text=f"Bill Amount\n{str(self.bill_amt)}")
+        self.lbl_net_pay.config(text=f"Net Pay\n{str(self.net_pay)}")
         self.cartTitle.config(text=f"Cart \t Total Products: [{str(len(self.cart_list))}]")
     
     def show_cart(self):
@@ -359,10 +358,54 @@ class BillClass:
             for row in self.cart_list:
                 self.Cart_Table.insert('',END,values=row)
         except Exception as ex:
-            messagebox.showerror("Error",f"Error due to: {str(ex)}")
+            messagebox.showerror("Error",f"Error due to: {str(ex)}", parent=self.root)
             
     def generate_bill(self):
-        pass
+        if self.var_cname == '' or self.var_contact == '':
+            messagebox.showerror("Error","Customer Details are Required", parent=self.root)
+        elif len(self.cart_list) == 0:
+            messagebox.showerror("Error","Please Add Product to the Cart", parent=self.root)
+        else:
+            # =====Bill Top=====
+            self.bill_top()
+            # =====Bill Middle=====
+            self.bill_middle()
+            # =====Bill Bottom=====
+            self.bill_bottom()
+        
+    def bill_top(self):
+        invoice = int(time.strftime("%H%M%S")) + int(time.strftime("%d%m%Y"))
+        bill_top_temp = f'''
+\t\tXYZ-Inventory
+\t Phone No. 1234567890 , Belagavi-590006
+{str('='*47)}
+ Customer Name: {self.var_cname.get()}
+ Ph No. :{self.var_contact.get()}
+ Bill No. {str(invoice)}\t\t\tDate: {str(time.strftime('%d/%m/%Y'))}
+{str('='*47)}
+ Product Name:\t\t\tQTY\tPrice
+{str('='*47)}
+        '''
+        self.txt_bill_area.delete('1.0', END)
+        self.txt_bill_area.insert('1.0', bill_top_temp)
+    
+    def bill_middle(self):
+        for row in self.cart_list:
+            name = row[1]
+            qty = row[3]
+            price = float(row[2]) * int(row[3])
+            price = str(price)
+            self.txt_bill_area.insert(END, "\n "+name+"\t\t\t"+qty+"\t\t\tRs."+price)
+        
+    def bill_bottom(self):
+        bill_bottom_temp = f'''
+{str('='*47)}
+ Bill Amount\t\t\t\tRs.{self.bill_amt}
+ Discount\t\t\t\tRs.{self.discount}
+ Net Pay\t\t\t\tRs.{self.net_pay}
+{str('='*47)}\n
+        '''
+        self.txt_bill_area.insert(END, bill_bottom_temp)
         
 if __name__ == '__main__':
     root = Tk()
