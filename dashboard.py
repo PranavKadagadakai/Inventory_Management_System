@@ -55,22 +55,22 @@ class dashBoard:
 
         # Labels
         self.lbl_employee = Label(self.root, text="Total Employee\n[ 0 ]", bg="#33bbf9", fg="white",font=("goudy old style", 20, "bold"), bd=5, relief=RIDGE)
-        self.lbl_employee.place(x=25, y=120, height=150, width=300)
+        self.lbl_employee.place(x=25, y=270, height=150, width=300)
 
         # Total Supplier
         self.lbl_supplier = Label(self.root, text="Total Supplier\n[ 0 ]", bg="#ff5722", fg="white",font=("goudy old style", 20, "bold"), bd=5, relief=RIDGE)
-        self.lbl_supplier.place(x=360, y=120, height=150, width=300)
+        self.lbl_supplier.place(x=360, y=270, height=150, width=300)
 
         # Total Product
         self.lbl_product = Label(self.root, text="Total Product\n[ 0 ]", bg="#607d8b", fg="white",font=("goudy old style", 20, "bold"), bd=5, relief=RIDGE)
-        self.lbl_product.place(x=25, y=325, height=150, width=300)
+        self.lbl_product.place(x=25, y=475, height=150, width=300)
 
         # Total Sales
         self.lbl_sales = Label(self.root, text="Total Sales\n[ 0 ]", bg="#ffc107", fg="white",font=("goudy old style", 20, "bold"), bd=5, relief=RIDGE)
-        self.lbl_sales.place(x=360, y=325, height=150, width=300)
+        self.lbl_sales.place(x=360, y=475, height=150, width=300)
 
         # menu Button
-        btn_menu=Button(self.root,text="Menu",command=self.main,font=('times new roman',15,'bold'),bg='orange',fg='white',cursor='hand2').place(x=25,y=650,width=180)
+        btn_menu=Button(self.root,text="Menu",command=self.main,font=('times new roman',15,'bold'),bg='orange',fg='white',cursor='hand2').place(x=25,y=170,width=180)
 
         self.update_lbl()
 
