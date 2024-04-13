@@ -1,6 +1,7 @@
 from tkinter import*
 from tkinter import ttk,messagebox
 import sqlite3
+import time
 
 class supplierClass:
     def __init__(self,root):
@@ -24,6 +25,8 @@ class supplierClass:
 
         # 1st row
         lbl_invoice=Label(self.root,text="Invoice No.",font=("goudy old style",12)).place(x=25,y=50)
+        unique_ID = int(time.strftime("%H%S%M")) + int(time.strftime("%S"))
+        self.var_invoice.set(unique_ID % 1000)
         txt_invoice=Entry(self.root,textvariable=self.var_invoice,font=("goudy old style",12),bg="lightyellow").place(x=145,y=50,width=180)
 
         lbl_search=Label(self.root,text="Invoice No",font=("goudy old style",12)).place(x=650,y=50)
@@ -133,7 +136,8 @@ class supplierClass:
             messagebox.showerror("Error",f"Error due to: {str(ex)}")
 
     def clear(self):
-        self.var_invoice.set("")
+        unique_ID = int(time.strftime("%H%S%M")) + int(time.strftime("%S"))
+        self.var_invoice.set(unique_ID%1000)
         self.var_name.set("")
         self.var_contact.set("")
         self.var_desc.delete('1.0',END)

@@ -11,7 +11,7 @@ class Login_System:
     def __init__(self,root):
         self.root=root
         self.root.title("Login System | Developed by FinTech Innovators")
-        self.root.geometry("1350x700+0+0")
+        self.root.geometry("1520x775+0+0")
 
         self.otp=''
 
@@ -21,10 +21,10 @@ class Login_System:
         self.password=StringVar()
         
         login_frame=Frame(self.root ,bd=2 ,relief=RIDGE,bg="white")
-        login_frame.place(x=500, y=90 ,width=350,height=500)
+        login_frame.place(x=550, y=90 ,width=350,height=500)
         title=Label(login_frame ,text="Login System", font=("Elephant",25,"bold"),bg="white").place(x=0,y=30,relwidth=1)
 
-        lbl_user=Label(login_frame,text="employee_id",font=("Andalus",14),bg="white",fg="#767171").place(x=50,y=100)
+        lbl_user=Label(login_frame,text="Username",font=("Andalus",14),bg="white",fg="#767171").place(x=50,y=100)
        
         txt_employee_id=Entry(login_frame,textvariable=self.employee_id,font=("Times new roman",14),bg="#ECECEC").place(x=50,y=140,width=240)
         
@@ -38,12 +38,6 @@ class Login_System:
 
         btn_forgot=Button(login_frame,text="Forgot Password?",command=self.forget_window,font=("times new roman",14),bd=0,bg="white",fg="#00759e",activebackground="white",activeforeground="#00759e",cursor="hand2").place(x=100,y=400)
 
-        #frame 2
-        register_frame=Frame(self.root ,bd=2 ,relief=RIDGE,bg="white")
-        register_frame.place(x=500, y=610 ,width=350,height=60)
-
-        lbl_reg=Label(register_frame,text="Don't have an account?",font=("times new roman",12),bg="white").place(x=47,y=18)
-        btn_register=Button(register_frame,text="Sign Up",font=("times new roman",12,"bold"),bd=0,bg="white",fg="#00759e",activebackground="white",activeforeground="#00759e",cursor="hand2").place(x=200,y=17)
 
 
     def login(self):
@@ -60,7 +54,7 @@ class Login_System:
                 else:
                     if user[0]=="Admin":
                         self.root.destroy()
-                        os.system("python main.py")
+                        os.system("python dashboard.py")
                     else:
                         self.root.destroy()
                         os.system("python billing.py")

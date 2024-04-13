@@ -1,7 +1,7 @@
 from tkinter import *
-#from PIL import Image, ImageTk
 from tkinter import ttk,messagebox
 import sqlite3
+import time
 
 class employeeClass:
     def __init__(self,root):
@@ -46,10 +46,13 @@ class employeeClass:
         # main content
 
         # 1st row
-        lbl_ID=Label(self.root,text="Employee ID",font=("goudy old style",12)).place(x=50,y=150)
+        lbl_ID=Label(self.root,text="User ID",font=("goudy old style",12)).place(x=50,y=150)
         lbl_gender=Label(self.root,text="Gender",font=("goudy old style", 12)).place(x=420, y=150)
         lbl_contact=Label(self.root,text="Contact",font=("goudy old style", 12)).place(x=770, y=150)
 
+
+        unique_ID=int(time.strftime("%H%S%M"))+int(time.strftime("%S"))
+        self.var_ID.set(unique_ID%1000)
         txt_ID=Entry(self.root,textvariable=self.var_ID,font=("goudy old style",12),bg='lightyellow').place(x=150,y=150,width=180)
 
         txt_gender=ttk.Combobox(self.root, textvariable=self.var_gender,values=("Select", "Male", "Female", "Other"), state='readonly',font=("goudy old style", 10))  # Create Combobox
@@ -284,7 +287,8 @@ class employeeClass:
 
 
     def clear(self):
-        self.var_ID.set("")
+        unique_ID = int(time.strftime("%H%S%M")) + int(time.strftime("%S"))
+        self.var_ID.set(unique_ID%1000)
         self.var_name.set("")
         self.var_email.set("")
         self.var_gender.set("Select")

@@ -42,7 +42,7 @@ class saleClass:
 
         # Bill Area
         bill_area_frame=Frame(self.root,bd=3,relief=RIDGE)
-        bill_area_frame.place(x=300,y=90,width=410,height=380)
+        bill_area_frame.place(x=300,y=90,width=450,height=380)
 
         # Title2
         title2 = Label(bill_area_frame, text = "Customer Bill Area", font = ("times new roman", 13, "bold"), bg = 'orange').pack(side=TOP, fill=X)

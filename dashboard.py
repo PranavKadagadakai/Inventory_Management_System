@@ -27,7 +27,7 @@ class dashBoard:
         title = Label(self.root, text="Finance Management System", image=self.title_icon, compound=LEFT,font=("times new roman", 40, "bold"), bg="#010c48", fg="white", anchor="w", padx=20).place(x=0,y=0,relwidth=1,height=70)
 
         # logout button
-        logout = Button(self.root, text="Logout", font=("times new roman", 15, "bold"), bg="yellow",cursor="hand2").place(x=1350, y=10, height=50, width=150)
+        logout = Button(self.root,command=self.logout, text="Logout", font=("times new roman", 15, "bold"), bg="yellow",cursor="hand2").place(x=1350, y=10, height=50, width=150)
 
         # sub title
         current_date = datetime.date.today()
@@ -99,7 +99,7 @@ class dashBoard:
         ax = figure.add_subplot(111)
         ax.bar(product_names, product_values, color='#11EA05')
         ax.set_xlabel("Product Name", fontsize=10)
-        ax.set_ylabel("Product Value", fontsize=10)
+        ax.set_ylabel("Product Sales", fontsize=10)
         ax.set_title("Product Stock Levels", fontsize=12)
         ax.tick_params(axis='x', labelrotation=90)
 
@@ -161,6 +161,10 @@ class dashBoard:
     def main(self):
         self.new_win = Toplevel(self.root)
         self.new_obj = IMS(self.new_win)
+
+    def logout(self):
+       self.root.destroy()
+       os.system("python login.py")
 
 if __name__ == "__main__":
     root = Tk()

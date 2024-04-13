@@ -10,6 +10,7 @@ from category import categoryClass
 import os
 from product import productClass
 from sales import saleClass
+from billing import BillClass
 
 class IMS:
     def __init__(self,root):
@@ -77,10 +78,10 @@ class IMS:
         sales = Button(leftFrame, text="Sales",command=self.sale,image=self.frame_btn_icon,compound=LEFT,padx=15,anchor="w", font=("times new roman", 20, "bold"), bg="white", bd=4,cursor="hand2").pack(side=TOP, fill=X)
 
         # Frame button Bill
-        exit = Button(leftFrame, text="Bill", image=self.frame_btn_icon, compound=LEFT, padx=15, anchor="w",font=("times new roman", 20, "bold"), bg="white", bd=4, cursor="hand2").pack(side=TOP, fill=X)
+        exit = Button(leftFrame, text="Bill",command=self.bill, image=self.frame_btn_icon, compound=LEFT, padx=15, anchor="w",font=("times new roman", 20, "bold"), bg="white", bd=4, cursor="hand2").pack(side=TOP, fill=X)
 
         # Frame button Exit
-        back = Button(leftFrame, text="Back",image=self.frame_btn_icon,compound=LEFT,padx=15,anchor="w", font=("times new roman", 20, "bold"), bg="white", bd=4,cursor="hand2").pack(side=TOP, fill=X)
+        back = Button(leftFrame,command=self.back, text="Back",image=self.frame_btn_icon,compound=LEFT,padx=15,anchor="w", font=("times new roman", 20, "bold"), bg="white", bd=4,cursor="hand2").pack(side=TOP, fill=X)
 
 
 
@@ -143,6 +144,10 @@ class IMS:
        self.root.destroy()
        os.system("python login.py")
 
+    def back(self):
+       self.root.destroy()
+       os.system("python dashboard.py")
+
 
     def product(self):
         self.new_win=Toplevel(self.root)
@@ -151,6 +156,10 @@ class IMS:
     def sale(self):
         self.new_win=Toplevel(self.root)
         self.new_obj=saleClass(self.new_win)
+
+    def bill(self):
+        self.new_win=Toplevel(self.root)
+        self.new_obj=BillClass(self.new_win)
 
 
     def update_lbl(self):
