@@ -1,12 +1,9 @@
 from tkinter import *
 from tkinter import ttk, messagebox
 from PIL import Image, ImageTk
-<<<<<<< HEAD
 import os
-=======
 import datetime
 import sqlite3
->>>>>>> refs/remotes/origin/main
 
 class BillClass:
     def __init__(self,root):
@@ -100,13 +97,11 @@ class BillClass:
         
         lbl_CName = Label(CustomerFrame, text='Name', font=('times new roman', 15), bg='white').place(x=5, y=50)
         txt_CName = Entry(CustomerFrame, font=('times new roman', 15), textvariable=self.var_cname, bg='lightyellow').place(x=55, y=50, width=170)
-        
-<<<<<<< HEAD
 
     def logout(self):
         self.root.destroy()
         os.system("python login.py")
-=======
+        
         lbl_Contact = Label(CustomerFrame, text='Contact No.', font=('times new roman', 15), bg='white').place(x=250, y=50, width=110)
         txt_Contact = Entry(CustomerFrame, textvariable=self.var_contact, font=('times new roman', 15), bg='lightyellow').place(x=365, y=50, width=160)
         
@@ -368,7 +363,6 @@ class BillClass:
             
     def generate_bill(self):
         pass
->>>>>>> refs/remotes/origin/main
         
 if __name__ == '__main__':
     root = Tk()

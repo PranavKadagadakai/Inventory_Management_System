@@ -11,7 +11,6 @@ import os
 from product import productClass
 from sales import saleClass
 
-
 class IMS:
     def __init__(self,root):
         self.root=root
