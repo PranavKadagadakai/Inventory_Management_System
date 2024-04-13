@@ -142,7 +142,7 @@ class BillClass:
         CalcFrame = Frame(Calc_Cart_Frame, bd=9, relief=RIDGE, bg='white')
         CalcFrame.place(x=5, y=10, width=285, height=365)
         
-        txt_cal_input = Entry(CalcFrame, textvariable=self.var_cal_input, font=('arial', 15, 'bold'), justify=RIGHT, bd=10, relief=GROOVE, width=22).grid(row=0, columnspan=4)
+        txt_cal_input = Entry(CalcFrame, textvariable=self.var_cal_input, state='readonly', font=('arial', 15, 'bold'), justify=RIGHT, bd=10, relief=GROOVE, width=22).grid(row=0, columnspan=4)
         
         btn_7 = Button(CalcFrame, text='7', font=('Arial',15, 'bold'), command= lambda: self.get_input(7), bd=5, width=4, pady=13, cursor='hand2').grid(row=1, column=0)
         btn_8 = Button(CalcFrame, text='8', font=('Arial',15, 'bold'), command= lambda: self.get_input(8), bd=5, width=4, pady=13, cursor='hand2').grid(row=1, column=1)
