@@ -32,8 +32,10 @@ class BillClass:
                                                                                                                  height=70)
 
         # logout button
+
         logout = Button(self.root,command=self.logout, text="Logout", font=("times new roman", 15, "bold"), bg="yellow",
                         cursor="hand2").place(x=1350, y=10, height=50, width=150)
+
 
         # sub title
         current_date = datetime.date.today()
@@ -130,6 +132,7 @@ class BillClass:
         txt_Contact = Entry(CustomerFrame, textvariable=self.var_contact, font=('times new roman', 15),
                             bg='lightyellow').place(x=365, y=50, width=160)
 
+
         # =====Calculator & Cart Frame=====
         Calc_Cart_Frame = Frame(self.root, bd=4, relief=RIDGE, bg='white')
         Calc_Cart_Frame.place(x=455, y=210, width=600, height=390)
@@ -138,46 +141,29 @@ class BillClass:
         self.var_cal_input = StringVar()
         CalcFrame = Frame(Calc_Cart_Frame, bd=9, relief=RIDGE, bg='white')
         CalcFrame.place(x=5, y=10, width=285, height=365)
+        
+        txt_cal_input = Entry(CalcFrame, textvariable=self.var_cal_input, font=('arial', 15, 'bold'), justify=RIGHT, bd=10, relief=GROOVE, width=22).grid(row=0, columnspan=4)
+        
+        btn_7 = Button(CalcFrame, text='7', font=('Arial',15, 'bold'), command= lambda: self.get_input(7), bd=5, width=4, pady=13, cursor='hand2').grid(row=1, column=0)
+        btn_8 = Button(CalcFrame, text='8', font=('Arial',15, 'bold'), command= lambda: self.get_input(8), bd=5, width=4, pady=13, cursor='hand2').grid(row=1, column=1)
+        btn_9 = Button(CalcFrame, text='9', font=('Arial',15, 'bold'), command= lambda: self.get_input(9), bd=5, width=4, pady=13, cursor='hand2').grid(row=1, column=2)
+        btn_sum = Button(CalcFrame, text='+', font=('Arial',15, 'bold'), command= lambda: self.get_input('+'), bd=5, width=4, pady=13, cursor='hand2').grid(row=1, column=3)
+        
+        btn_4 = Button(CalcFrame, text='4', font=('Arial',15, 'bold'), command= lambda: self.get_input(4), bd=5, width=4, pady=13, cursor='hand2').grid(row=2, column=0)
+        btn_5 = Button(CalcFrame, text='5', font=('Arial',15, 'bold'), command= lambda: self.get_input(5), bd=5, width=4, pady=13, cursor='hand2').grid(row=2, column=1)
+        btn_6 = Button(CalcFrame, text='6', font=('Arial',15, 'bold'), command= lambda: self.get_input(6), bd=5, width=4, pady=13, cursor='hand2').grid(row=2, column=2)
+        btn_sub = Button(CalcFrame, text='-', font=('Arial',15, 'bold'), command= lambda: self.get_input('-'), bd=5, width=4, pady=13, cursor='hand2').grid(row=2, column=3)
 
-        txt_cal_input = Entry(CalcFrame, textvariable=self.var_cal_input, font=('arial', 15, 'bold'), justify=RIGHT,
-                              bd=10, relief=GROOVE, width=22).grid(row=0, columnspan=4)
-
-        btn_7 = Button(CalcFrame, text='7', font=('Arial', 15, 'bold'), command=lambda: self.get_input(7), bd=5,
-                       width=4, pady=13, cursor='hand2').grid(row=1, column=0)
-        btn_8 = Button(CalcFrame, text='8', font=('Arial', 15, 'bold'), command=lambda: self.get_input(8), bd=5,
-                       width=4, pady=13, cursor='hand2').grid(row=1, column=1)
-        btn_9 = Button(CalcFrame, text='9', font=('Arial', 15, 'bold'), command=lambda: self.get_input(9), bd=5,
-                       width=4, pady=13, cursor='hand2').grid(row=1, column=2)
-        btn_sum = Button(CalcFrame, text='+', font=('Arial', 15, 'bold'), command=lambda: self.get_input('+'), bd=5,
-                         width=4, pady=13, cursor='hand2').grid(row=1, column=3)
-
-        btn_4 = Button(CalcFrame, text='4', font=('Arial', 15, 'bold'), command=lambda: self.get_input(4), bd=5,
-                       width=4, pady=13, cursor='hand2').grid(row=2, column=0)
-        btn_5 = Button(CalcFrame, text='5', font=('Arial', 15, 'bold'), command=lambda: self.get_input(5), bd=5,
-                       width=4, pady=13, cursor='hand2').grid(row=2, column=1)
-        btn_6 = Button(CalcFrame, text='6', font=('Arial', 15, 'bold'), command=lambda: self.get_input(6), bd=5,
-                       width=4, pady=13, cursor='hand2').grid(row=2, column=2)
-        btn_sub = Button(CalcFrame, text='-', font=('Arial', 15, 'bold'), command=lambda: self.get_input('-'), bd=5,
-                         width=4, pady=13, cursor='hand2').grid(row=2, column=3)
-
-        btn_1 = Button(CalcFrame, text='1', font=('Arial', 15, 'bold'), command=lambda: self.get_input(1), bd=5,
-                       width=4, pady=13, cursor='hand2').grid(row=3, column=0)
-        btn_2 = Button(CalcFrame, text='2', font=('Arial', 15, 'bold'), command=lambda: self.get_input(2), bd=5,
-                       width=4, pady=13, cursor='hand2').grid(row=3, column=1)
-        btn_3 = Button(CalcFrame, text='3', font=('Arial', 15, 'bold'), command=lambda: self.get_input(3), bd=5,
-                       width=4, pady=13, cursor='hand2').grid(row=3, column=2)
-        btn_mul = Button(CalcFrame, text='', font=('Arial', 15, 'bold'), command=lambda: self.get_input(''), bd=5,
-                         width=4, pady=13, cursor='hand2').grid(row=3, column=3)
-
-        btn_0 = Button(CalcFrame, text='0', font=('Arial', 15, 'bold'), command=lambda: self.get_input(0), bd=5,
-                       width=4, pady=17, cursor='hand2').grid(row=4, column=0)
-        btn_c = Button(CalcFrame, text='c', font=('Arial', 15, 'bold'), command=self.clear_cal, bd=5, width=4, pady=17,
-                       cursor='hand2').grid(row=4, column=1)
-        btn_eq = Button(CalcFrame, text='=', font=('Arial', 15, 'bold'), command=self.perform_cal, bd=5, width=4,
-                        pady=17, cursor='hand2').grid(row=4, column=2)
-        btn_div = Button(CalcFrame, text='/', font=('Arial', 15, 'bold'), command=lambda: self.get_input('/'), bd=5,
-                         width=4, pady=17, cursor='hand2').grid(row=4, column=3)
-
+        btn_1 = Button(CalcFrame, text='1', font=('Arial',15, 'bold'), command= lambda: self.get_input(1), bd=5, width=4, pady=13, cursor='hand2').grid(row=3, column=0)
+        btn_2 = Button(CalcFrame, text='2', font=('Arial',15, 'bold'), command= lambda: self.get_input(2), bd=5, width=4, pady=13, cursor='hand2').grid(row=3, column=1)
+        btn_3 = Button(CalcFrame, text='3', font=('Arial',15, 'bold'), command= lambda: self.get_input(3), bd=5, width=4, pady=13, cursor='hand2').grid(row=3, column=2)
+        btn_mul = Button(CalcFrame, text='*', font=('Arial',15, 'bold'), command= lambda: self.get_input('*'), bd=5, width=4, pady=13, cursor='hand2').grid(row=3, column=3)
+        
+        btn_0 = Button(CalcFrame, text='0', font=('Arial',15, 'bold'), command= lambda: self.get_input(0), bd=5, width=4, pady=17, cursor='hand2').grid(row=4, column=0)
+        btn_c = Button(CalcFrame, text='c', font=('Arial',15, 'bold'), command=self.clear_cal, bd=5, width=4, pady=17, cursor='hand2').grid(row=4, column=1)
+        btn_eq = Button(CalcFrame, text='=', font=('Arial',15, 'bold'), command=self.perform_cal, bd=5, width=4, pady=17, cursor='hand2').grid(row=4, column=2)
+        btn_div = Button(CalcFrame, text='/', font=('Arial',15, 'bold'), command= lambda: self.get_input('/'), bd=5, width=4, pady=17, cursor='hand2').grid(row=4, column=3)
+        
         # =====CartFrame=====
         CartFrame = Frame(Calc_Cart_Frame, bd=4, relief=RIDGE)
         CartFrame.place(x=290, y=10, width=300, height=365)
@@ -289,8 +275,8 @@ class BillClass:
                                font=('goudy old style', 15, 'bold'), bg='grey', fg='white')
         btn_clear_all.place(x=124, y=80, width=120, height=50)
 
-        btn_generate = Button(billMenuFrame, text='Generate\nSave Bill', command=self.generate_bill, cursor='hand2',
-                              font=('goudy old style', 15, 'bold'), bg='#009688', fg='white')
+        btn_generate = Button(billMenuFrame, text='Generate\nSave Bill', command=self.generate_bill, cursor='hand2', font=('goudy old style', 15, 'bold'), bg='#009688', fg='white')
+
         btn_generate.place(x=246, y=80, width=160, height=50)
 
         # =====Footer=====
@@ -435,6 +421,7 @@ class BillClass:
             messagebox.showerror("Error", "Customer Details are Required", parent=self.root)
         elif len(self.cart_list) == 0:
             messagebox.showerror("Error", "Please Add Product to the Cart", parent=self.root)
+
         else:
             # =====Bill Top=====
             self.bill_top()
@@ -533,7 +520,6 @@ class BillClass:
     def logout(self):
        self.root.destroy()
        os.system("python login.py")
-
 
 if __name__ == '__main__':
     root = Tk()
