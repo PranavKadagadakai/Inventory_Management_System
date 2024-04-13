@@ -1,5 +1,4 @@
 from tkinter import*
-from PIL import ImageTk 
 from tkinter import messagebox
 import sqlite3
 import os
